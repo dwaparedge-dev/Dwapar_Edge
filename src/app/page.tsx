@@ -150,7 +150,7 @@ export default function Home() {
             v2.4 LTS Active
           </span>
           <a
-            href="#demo"
+            href="/setup"
             className="px-4 py-2 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-indigo hover:from-brand-cyan/90 hover:to-brand-indigo/90 text-sm font-bold text-black transition-all hover:scale-[1.03] shadow-[0_0_15px_rgba(6,182,212,0.3)] hover:shadow-[0_0_25px_rgba(6,182,212,0.5)]"
             id="header-cta-btn"
           >
@@ -596,7 +596,7 @@ export default function Home() {
                     <rect x="120" y="130" width="20" height="14" rx="2" fill="#1f2937" stroke="rgba(255,255,255,0.2)" />
 
                     {/* Logo Plate */}
-                    <rect x="65" y="65" width="70" height="30" rx="6" fill="#030712" border="1px solid rgba(255,255,255,0.05)" />
+                    <rect x="65" y="65" width="70" height="30" rx="6" fill="#030712" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
                     <text x="100" y="84" fill="#06b6d4" fontSize="10" fontFamily="monospace" fontWeight="bold" textAnchor="middle" letterSpacing="1">D-EDGE 1</text>
                     
                     {/* Glowing LED Indicators */}

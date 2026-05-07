@@ -1,0 +1,43 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Next.js
+.next/
+out/
+dist/
+build/
+.vercel/
+deploy.sh
+yarn.lock
+package-lock.json
+
+# Env files
+.env
+.env.local
+.env.production
+.env.development
+.env.test
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Deployment temp
+*.tar.gz
+
+# Server only folder (DO NOT PUSH TO GIT)
+frontend-prod/
+
+# Logs
+logs/
+*.log
+.vercel
+.env*.local

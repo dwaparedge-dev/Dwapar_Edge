@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     "Modbus",
     "MQTT Gateway"
   ],
-  authors: [{ name: "Dwapar Tech" }],
+  authors: [{ name: "Dwapar Edge" }],
   openGraph: {
     title: "Dwapar Edge | Industrial IoT Gateway & Edge Intelligence",
     description: "Next-generation industrial IoT edge platform for real-time machine telemetry, local edge AI analytics, and seamless Factory Plus cloud ERP integration.",

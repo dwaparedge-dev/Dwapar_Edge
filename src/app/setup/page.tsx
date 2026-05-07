@@ -1212,7 +1212,7 @@ export default function SetupPage() {
             <span className="font-mono text-[9px] text-gray-500 uppercase">Dwapar Edge Gateway Configuration Console</span>
           </div>
           <span className="text-[9px] font-mono text-gray-500">
-            &copy; {new Date().getFullYear()} Dwapar Technologies. Authorized for Factory Plus Shop Floor Integration.
+            &copy; {new Date().getFullYear()} Dwapar Edge. Authorized for Factory Plus Shop Floor Integration.
           </span>
         </div>
       </footer>

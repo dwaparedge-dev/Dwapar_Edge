@@ -18,7 +18,7 @@ export default function CTA() {
           <p className="text-xl text-[#f1f2f6] mb-10 max-w-2xl mx-auto font-medium">
             Ready to upgrade your manufacturing operations? Get a personalized demo of the cloud platform and edge hardware.
           </p>
-          <a href="https://factory-plus.vercel.app/" target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-xl bg-white text-[#2f3542] font-bold text-lg hover:bg-gray-100 transition-all shadow-xl flex items-center justify-center gap-2 mx-auto w-fit">
+          <a href="https://www.factoone.com/" target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-xl bg-white text-[#2f3542] font-bold text-lg hover:bg-gray-100 transition-all shadow-xl flex items-center justify-center gap-2 mx-auto w-fit">
             Visit Website <ArrowRight className="w-5 h-5" />
           </a>
         </div>

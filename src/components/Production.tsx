@@ -414,7 +414,7 @@ export default function Production() {
         </motion.div>
         
         <motion.div variants={itemVariants} className="mt-12 flex justify-center">
-          <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="https://factory-plus.vercel.app/" target="_blank" rel="noopener noreferrer" className="px-10 py-5 rounded-2xl bg-[#4b6584] text-white text-lg font-bold transition-all shadow-xl hover:shadow-2xl hover:bg-[#3a4f6a] flex items-center gap-3 group">
+          <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="https://www.factoone.com/" target="_blank" rel="noopener noreferrer" className="px-10 py-5 rounded-2xl bg-[#4b6584] text-white text-lg font-bold transition-all shadow-xl hover:shadow-2xl hover:bg-[#3a4f6a] flex items-center gap-3 group">
             Visit Factory Plus Live <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </motion.a>
         </motion.div>

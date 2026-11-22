@@ -13,7 +13,7 @@ interface DiscoveredMachine {
 }
 
 export default function SetupPage() {
-  // Wizard active step: 1 = Network, 2 = Factory Plus, 3 = Ingestion, 4 = Edge AI, 5 = Finalize, 6 = Active Dashboard
+  // Wizard active step: 1 = Network, 2 = FactoONE, 3 = Ingestion, 4 = Edge AI, 5 = Finalize, 6 = Active Dashboard
   const [currentStep, setCurrentStep] = useState<number>(1);
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
 
@@ -38,8 +38,8 @@ export default function SetupPage() {
   const [netTestLogs, setNetTestLogs] = useState<string[]>([]);
   const [netTestSuccess, setNetTestSuccess] = useState<boolean | null>(null);
 
-  // Step 2: Factory Plus Link
-  const [fpUrl, setFpUrl] = useState("https://dwapar-industries.factoryplus.app");
+  // Step 2: FactoONE Link
+  const [fpUrl, setFpUrl] = useState("https://dwapar-industries.factoone.com");
   const [fpApiKey, setFpApiKey] = useState("");
   const [showApiKey, setShowApiKey] = useState(false);
   const [deviceLocation, setDeviceLocation] = useState("Assembly Line - Floor 2");
@@ -81,7 +81,7 @@ export default function SetupPage() {
   // Step 6: Active Running Dashboard
   const [dashboardIsIngesting, setDashboardIsIngesting] = useState(true);
   const [dashboardLogs, setDashboardLogs] = useState<string[]>([
-    "[SYSTEM] Tunnel established: secure-ws://dwapar-industries.factoryplus.app/edge-gateway/v2",
+    "[SYSTEM] Tunnel established: secure-ws://dwapar-industries.factoone.com/edge-gateway/v2",
     "[SYSTEM] Local database buffer initialized (Capacity: 60 Days)",
     "[INGEST] CNC-Mill-04 vibration telemetry incoming (100Hz)...",
     "[INGEST] Robotic-Arm-02 joint temperature incoming (50Hz)...",
@@ -128,7 +128,7 @@ export default function SetupPage() {
       setNetTestLogs((prev) => [
         ...prev,
         "[3/3] Gateway ping successful! (0.8ms average)",
-        "[3/3] Performing DNS lookup check on factoryplus.app...",
+        "[3/3] Performing DNS lookup check on factoone.com...",
         "[3/3] DNS query successful. Resolving cloud servers...",
       ]);
     }, 2000);
@@ -143,16 +143,16 @@ export default function SetupPage() {
     }, 3000);
   };
 
-  // Handle Factory Plus link handshaking simulation
+  // Handle FactoONE link handshaking simulation
   const handleFpLink = () => {
     if (!fpApiKey) {
-      alert("Please enter your Factory Plus API token to authenticate.");
+      alert("Please enter your FactoONE API token to authenticate.");
       return;
     }
     setIsFpLinking(true);
     setFpLinkSuccess(null);
     setFpLinkLogs([
-      "[1/3] Resolving Factory Plus tenant endpoint...",
+      "[1/3] Resolving FactoONE tenant endpoint...",
       `[1/3] Initiating secure handshake with: ${fpUrl}`,
     ]);
 
@@ -289,7 +289,7 @@ export default function SetupPage() {
       setActivationLog((prev) => [
         ...prev,
         "[TUNNEL] Testing bi-directional WebSockets sync connection...",
-        "[TUNNEL] Handshake confirmed. Device online status updated in Factory Plus.",
+        "[TUNNEL] Handshake confirmed. Device online status updated in FactoONE.",
       ]);
     }, 2800);
 
@@ -339,7 +339,7 @@ export default function SetupPage() {
       let logLine = `[${timestamp}] [${proto}] ${mach} -> ${param}: ${value}`;
 
       if (dashboardAnomalyTriggered && (param === "vibration" || param === "temperature")) {
-        logLine = `🚨 [${timestamp}] [ALERT] [Edge-AI] CRITICAL ANOMALY: ${mach} ${param} exceeded threshold! Score: ${(0.86 + Math.random() * 0.1).toFixed(3)} | Syncing Downtime Event to Factory Plus...`;
+        logLine = `🚨 [${timestamp}] [ALERT] [Edge-AI] CRITICAL ANOMALY: ${mach} ${param} exceeded threshold! Score: ${(0.86 + Math.random() * 0.1).toFixed(3)} | Syncing Downtime Event to FactoONE...`;
       }
 
       setDashboardLogs((prev) => [logLine, ...prev.slice(0, 11)]);
@@ -439,7 +439,7 @@ export default function SetupPage() {
               </div>
 
               <div className="flex items-center justify-between gap-4 pt-1">
-                <span className="text-gray-400">Factory Plus Cloud (Secure):</span>
+                <span className="text-gray-400">FactoONE Cloud (Secure):</span>
                 <span className="text-brand-indigo font-bold">{pingCloud} ms</span>
               </div>
               <div className="w-full bg-white/5 h-1 rounded-full overflow-hidden">
@@ -453,7 +453,7 @@ export default function SetupPage() {
             <span className="text-[10px] font-mono uppercase text-gray-500 block mb-1 tracking-wider">Setup Stepper Progress</span>
             {[
               { num: 1, label: "Network Connectivity" },
-              { num: 2, label: "Factory Plus Link" },
+              { num: 2, label: "FactoONE Link" },
               { num: 3, label: "Ingestion & Scan" },
               { num: 4, label: "Edge AI Configuration" },
               { num: 5, label: "Final Activation" },
@@ -656,15 +656,15 @@ export default function SetupPage() {
             <div className="space-y-6">
               <div className="flex flex-col gap-1.5 border-b border-white/5 pb-4">
                 <span className="text-xs font-mono text-brand-cyan uppercase tracking-wider font-semibold">Step 02 of 05</span>
-                <h2 className="text-2xl font-bold text-white">Authorize Factory Plus Link</h2>
+                <h2 className="text-2xl font-bold text-white">Authorize FactoONE Link</h2>
                 <p className="text-xs text-gray-400 leading-relaxed">
-                  Bridge this localized physical edge box with your Factory Plus manufacturing workspace to synchronise lot parameters and machine OEE metrics.
+                  Bridge this localized physical edge box with your FactoONE manufacturing workspace to synchronise lot parameters and machine OEE metrics.
                 </p>
               </div>
 
               <div className="space-y-4">
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[10px] font-mono uppercase text-gray-400 font-semibold">Factory Plus Tenant URL</label>
+                  <label className="text-[10px] font-mono uppercase text-gray-400 font-semibold">FactoONE Tenant URL</label>
                   <input
                     type="url"
                     value={fpUrl}
@@ -975,7 +975,7 @@ export default function SetupPage() {
                 </div>
 
                 <div className="p-4 rounded-2xl bg-white/2 border border-white/5 space-y-2 text-xs">
-                  <span className="text-[10px] font-mono uppercase text-gray-500 tracking-wider block">Factory Plus Endpoint</span>
+                  <span className="text-[10px] font-mono uppercase text-gray-500 tracking-wider block">FactoONE Endpoint</span>
                   <div className="flex justify-between font-mono">
                     <span className="text-gray-400">Tenant Workspace:</span>
                     <span className="text-brand-indigo truncate max-w-[130px]" title={fpUrl}>dwapar-industries</span>
@@ -1125,7 +1125,7 @@ export default function SetupPage() {
                     💡 Simulating Factory Failures
                   </span>
                   <p className="text-[10px] text-gray-400 max-w-md leading-relaxed font-sans">
-                    Force CNC vibration levels to skyrocket. See how the local Edge AI intercepts the anomaly and registers a downtime log immediately inside Factory Plus.
+                    Force CNC vibration levels to skyrocket. See how the local Edge AI intercepts the anomaly and registers a downtime log immediately inside FactoONE.
                   </p>
                 </div>
 
@@ -1212,7 +1212,7 @@ export default function SetupPage() {
             <span className="font-mono text-[9px] text-gray-500 uppercase">Dwapar Edge Gateway Configuration Console</span>
           </div>
           <span className="text-[9px] font-mono text-gray-500">
-            &copy; {new Date().getFullYear()} Dwapar Edge. Authorized for Factory Plus Shop Floor Integration.
+            &copy; {new Date().getFullYear()} Dwapar Edge. Authorized for FactoONE Shop Floor Integration.
           </span>
         </div>
       </footer>

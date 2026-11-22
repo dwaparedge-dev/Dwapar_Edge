@@ -22,7 +22,7 @@ export default function ProductDetails() {
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-[#4b6584]/20 text-[#a4b0be] text-xs font-bold mb-6 border border-[#4b6584]/30">
                 CLOUD ERP & MES
               </div>
-              <h3 className="text-4xl font-bold mb-6 text-white tracking-tight">Factory Plus</h3>
+              <h3 className="text-4xl font-bold mb-6 text-white tracking-tight">FactoONE</h3>
               <p className="text-gray-400 leading-relaxed mb-8 text-lg">
                 The ultimate enterprise solution for factory owners. Monitor production line efficiency instantly, track operator shifts, manage purchase orders, and visualize deep analytics—all in a beautiful, lightning-fast web portal.
               </p>
@@ -48,13 +48,13 @@ export default function ProductDetails() {
               </div>
             </div>
 
-            {/* CSS Replica of Factory Plus Dashboard */}
+            {/* CSS Replica of FactoONE Dashboard */}
             <div className="order-1 lg:order-2 relative w-full aspect-[4/3] rounded-2xl bg-[#f4f5f7] overflow-hidden border border-white/20 shadow-2xl transform transition-transform duration-700 group-hover:scale-[1.02] group-hover:-rotate-1">
               {/* Header */}
               <div className="absolute top-0 inset-x-0 h-10 bg-white border-b border-gray-200 flex items-center px-4 justify-between z-20">
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 bg-[#4b6584] rounded-sm flex items-center justify-center"><span className="text-[8px] font-bold text-white">F</span></div>
-                  <span className="text-[10px] font-bold text-[#2f3542]">Factory Plus</span>
+                  <span className="text-[10px] font-bold text-[#2f3542]">FactoONE</span>
                 </div>
                 <div className="flex gap-2">
                   <div className="w-16 h-4 bg-gray-100 rounded-full"></div>
@@ -143,7 +143,7 @@ export default function ProductDetails() {
               </div>
               <h3 className="text-4xl font-bold mb-6 text-white tracking-tight">Dwapar Edge Box</h3>
               <p className="text-gray-400 leading-relaxed mb-8 text-lg">
-                The physical bridge to your shop floor. Deploy our ruggedized edge computing node to ingest high-frequency telemetry from CNCs and robotic arms. It runs predictive AI locally, instantly uploading filtered insights directly into Factory Plus.
+                The physical bridge to your shop floor. Deploy our ruggedized edge computing node to ingest high-frequency telemetry from CNCs and robotic arms. It runs predictive AI locally, instantly uploading filtered insights directly into FactoONE.
               </p>
               <div className="space-y-5 mb-8">
                 <div className="flex items-center gap-4">

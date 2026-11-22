@@ -14,7 +14,7 @@ export default function CTA() {
       >
         <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 pointer-events-none" />
         <div className="relative z-10">
-          <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-6">See Factory Plus in Action</h2>
+          <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-6">See FactoONE in Action</h2>
           <p className="text-xl text-[#f1f2f6] mb-10 max-w-2xl mx-auto font-medium">
             Ready to upgrade your manufacturing operations? Get a personalized demo of the cloud platform and edge hardware.
           </p>

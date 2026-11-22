@@ -3,6 +3,26 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { ArrowRight, Play, Factory, LayoutDashboard, BadgeDollarSign, Package, CalendarDays, BarChart3, Settings, Bot, Sparkles, Clock, CheckCircle2, Activity, Database, Search, Globe, Bell, Lock, Shield } from "lucide-react";
 
+// Renders the desktop dashboard mockup at a fixed 1024px design width and scales it to fit the container (mobile-friendly).
+function ScaledMockup({ children }: { children: React.ReactNode }) {
+  const ref = React.useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(1);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const update = () => setScale(Math.min(1, el.clientWidth / 1024));
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+  return (
+    <div ref={ref} className="relative w-full overflow-hidden" style={{ height: 600 * scale }}>
+      <div className="absolute left-0 top-0" style={{ width: 1024, transform: `scale(${scale})`, transformOrigin: "top left" }}>{children}</div>
+    </div>
+  );
+}
+
 export default function Production() {
   const [currentScreen, setCurrentScreen] = useState(0);
 
@@ -28,41 +48,45 @@ export default function Production() {
   };
 
   const fadeVariants: Variants = {
-    hidden: { opacity: 0, scale: 0.98, filter: "blur(4px)" },
+    hidden: { opacity: 0, scale: 0.98, filter: "blur(0px)" },
     visible: { opacity: 1, scale: 1, filter: "blur(0px)", transition: { duration: 0.5 } },
-    exit: { opacity: 0, scale: 1.02, filter: "blur(4px)", transition: { duration: 0.5 } }
+    exit: { opacity: 0, scale: 1.02, filter: "blur(0px)", transition: { duration: 0.5 } }
   };
 
   return (
-    <section id="product" className="relative py-24 px-6 lg:px-12 max-w-7xl mx-auto flex flex-col items-center text-center">
-      <motion.div variants={containerVariants} initial="hidden" animate="visible" className="flex flex-col items-center w-full">
-        <motion.div variants={itemVariants} className="flex flex-col items-center w-full relative z-10 mb-12">
-          <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-gray-200 mb-8 shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-[#4b6584] animate-pulse" />
-            <span className="text-xs font-bold text-[#576574]">Introducing Factory Plus 2.0</span>
-          </motion.div>
-
-          <motion.h1 variants={itemVariants} className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 text-[#2f3542] max-w-4xl leading-[1.1]">
-            Run Your Entire Factory From <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4b6584] to-[#2f3542]">One Platform</span>
-          </motion.h1>
-
-          <motion.p variants={itemVariants} className="text-base md:text-lg text-[#576574] mb-4 max-w-2xl font-medium">
-            ERP + MES + Machine Intelligence for modern manufacturing.
-          </motion.p>
+    <section id="products" className="border-t border-line py-16 md:py-24 px-5 sm:px-8 scroll-mt-16">
+      <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} className="max-w-6xl mx-auto flex flex-col w-full">
+        <motion.div variants={itemVariants} className="grid lg:grid-cols-12 gap-8 lg:gap-10 mb-10 md:mb-14">
+          <div className="lg:col-span-7">
+            <p className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.22em] text-gold mb-5"><span className="w-2 h-2 bg-gold" />02 — Platform</p>
+            <h2 className="text-3xl md:text-5xl font-semibold tracking-[-0.025em] text-bone leading-[1.1]">FactoONE runs the whole plant from one place.</h2>
+            <p className="mt-5 text-base md:text-lg text-muted leading-relaxed">Our ERP + MES platform brings planning, process entry, lot tracking, raw materials and machine performance into a single live system.</p>
+            <a href="https://www.factoone.com/" target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex items-center gap-2 px-6 py-3.5 bg-gold text-ink text-sm font-semibold hover:bg-gold2 transition-colors">
+              Visit factoone.com <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+          <div className="lg:col-span-5 relative bg-coal border border-line self-start w-full">
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gold" />
+            {["Paperless process entry", "Lot & heat traceability", "Raw material and inventory control", "Live OEE and downtime alerts", "Staff, roles and permissions", "Built-in AI assistant"].map((pt) => (
+              <div key={pt} className="flex items-center gap-3 px-5 py-3.5 border-b border-line last:border-0 text-bone/90"><span className="w-3 h-px bg-gold" />{pt}</div>
+            ))}
+          </div>
         </motion.div>
 
+        <motion.p variants={itemVariants} className="font-mono text-[11px] uppercase tracking-[0.18em] text-dim mb-4">FactoONE — product preview</motion.p>
         {/* Floating Detailed UI Mockup - Video Animation Sequence */}
-        <motion.div variants={itemVariants} className="w-full max-w-5xl">
-          <motion.div variants={floatVariants} animate="animate" className="w-full relative rounded-2xl bg-[#f8f9fa] border border-gray-200 shadow-[0_30px_80px_-20px_rgba(47,53,66,0.3)] overflow-hidden flex flex-col text-left h-[600px]">
+        <motion.div variants={itemVariants} className="w-full p-2 md:p-3 bg-coal border border-line">
+          <ScaledMockup>
+          <motion.div className="w-full relative bg-[#f8f9fa] overflow-hidden flex flex-col text-left h-[600px]">
             
             {/* Top Navigation Bar - Pixel Perfect */}
             <div className="h-14 border-b border-gray-200 flex items-center px-4 gap-4 bg-white z-20 shrink-0">
               <div className="flex items-center gap-2">
                 <div className="w-6 h-6 bg-[#4b6584] rounded flex items-center justify-center text-white font-bold text-xs shadow-sm">F</div>
-                <span className="font-extrabold text-[#2f3542] text-base">Factory Plus</span>
+                <span className="font-extrabold text-[#2f3542] text-base">FactoONE</span>
                 <span className="text-gray-300 ml-2">&laquo;</span>
               </div>
-              <div className="hidden lg:flex items-center gap-1 ml-4 bg-[#f4f5f7] p-1 rounded-lg border border-gray-200">
+              <div className="flex items-center gap-1 ml-4 bg-[#f4f5f7] p-1 rounded-lg border border-gray-200">
                 <div className="px-3 py-1.5 bg-[#576574] text-white rounded-md text-xs font-bold flex items-center gap-1.5 shadow-sm"><LayoutDashboard className="w-3 h-3"/> Dashboard</div>
                 <div className="px-3 py-1.5 text-[#576574] hover:bg-white rounded-md text-xs font-bold flex items-center gap-1.5 transition-colors"><Settings className="w-3 h-3"/> Operations</div>
                 <div className="px-3 py-1.5 text-[#576574] hover:bg-white rounded-md text-xs font-bold flex items-center gap-1.5 transition-colors"><BarChart3 className="w-3 h-3"/> Reports</div>
@@ -70,7 +94,7 @@ export default function Production() {
                 <div className="px-3 py-1.5 text-[#576574] hover:bg-white rounded-md text-xs font-bold flex items-center gap-1.5 transition-colors"><Settings className="w-3 h-3"/> Settings</div>
                 <div className="px-3 py-1.5 text-[#576574] hover:bg-white rounded-md text-xs font-bold flex items-center gap-1.5 transition-colors"><Bot className="w-3 h-3"/> AI</div>
               </div>
-              <div className="ml-auto flex items-center gap-4 hidden sm:flex relative">
+              <div className="ml-auto flex items-center gap-4  relative">
                  <div className="relative">
                    <div className={`flex items-center gap-2 px-3 py-1.5 border border-gray-200 bg-gray-50 rounded-lg text-gray-400 text-xs shadow-inner w-48 transition-all ${currentScreen === 0 ? 'ring-2 ring-[#4b6584]' : ''}`}>
                      <Search className="w-3 h-3" /> Search <span className="px-1 bg-white border border-gray-200 rounded ml-auto text-[10px] font-bold text-gray-500 shadow-sm">⌘K</span>
@@ -117,7 +141,7 @@ export default function Production() {
 
             <div className="flex-1 flex bg-[#f4f5f7] overflow-hidden relative">
               {/* Sidebar */}
-              <div className="w-56 hidden md:flex flex-col bg-white border-r border-gray-200 py-4 z-10 shrink-0">
+              <div className="w-56 flex flex-col bg-white border-r border-gray-200 py-4 z-10 shrink-0">
                 {[
                   { i: <LayoutDashboard className="w-4 h-4"/>, l: "Overview", id: 0 },
                   { i: <Activity className="w-4 h-4"/>, l: "Process Entry", id: 1 },
@@ -147,7 +171,7 @@ export default function Production() {
                            <span className="px-3 py-1 bg-[#2f3542] rounded border border-white/10 text-xs font-bold shadow-sm">Last 30 Days</span>
                         </div>
                       </div>
-                      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                      <div className="grid grid-cols-4 gap-4">
                         {[
                           { v: "26,316", l: "TOTAL PARTS", c: "text-purple-600", bg: "bg-purple-100" },
                           { v: "2.06%", l: "UTILIZATION", c: "text-emerald-600", bg: "bg-emerald-100" },
@@ -161,7 +185,7 @@ export default function Production() {
                           </div>
                         ))}
                       </div>
-                      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-4">
+                      <div className="flex-1 grid grid-cols-2 gap-4">
                         <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-5 flex flex-col relative overflow-hidden">
                           <h3 className="text-sm font-bold text-[#2f3542] mb-4">Utilization Distribution</h3>
                           <div className="flex-1 flex items-center justify-center">
@@ -411,12 +435,7 @@ export default function Production() {
               </div>
             </div>
           </motion.div>
-        </motion.div>
-        
-        <motion.div variants={itemVariants} className="mt-12 flex justify-center">
-          <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="https://www.factoone.com/" target="_blank" rel="noopener noreferrer" className="px-10 py-5 rounded-2xl bg-[#4b6584] text-white text-lg font-bold transition-all shadow-xl hover:shadow-2xl hover:bg-[#3a4f6a] flex items-center gap-3 group">
-            Visit Factory Plus Live <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </motion.a>
+        </ScaledMockup>
         </motion.div>
 
       </motion.div>

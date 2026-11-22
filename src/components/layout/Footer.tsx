@@ -18,7 +18,7 @@ export default function Footer() {
         <div>
           <h4 className="font-bold text-white mb-4">Ecosystem</h4>
           <ul className="space-y-2 text-sm text-gray-500">
-            <li><a href="#products" className="hover:text-brand-cyan transition-colors">Factory Plus</a></li>
+            <li><a href="#products" className="hover:text-brand-cyan transition-colors">FactoONE</a></li>
             <li><Link href="/edge" className="hover:text-brand-cyan transition-colors">Dwapar Edge Gateway</Link></li>
           </ul>
         </div>

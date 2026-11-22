@@ -86,7 +86,7 @@ export default function HomeSetupPortal() {
       setSelfTestLogs((prev) => [
         ...prev,
         "[2/5] Checking Network Adapter (eth0)... SUCCESS (1000 Mbps Full Duplex)",
-        `[2/5] Querying DNS resolver... Resolved factoryplus.app`,
+        `[2/5] Querying DNS resolver... Resolved factoone.com`,
       ]);
       setSelfTestProgress(25);
     }, 1200);
@@ -114,7 +114,7 @@ export default function HomeSetupPortal() {
     setTimeout(() => {
       setSelfTestLogs((prev) => [
         ...prev,
-        "[5/5] Checking WebSocket tunnel to Factory Plus...",
+        "[5/5] Checking WebSocket tunnel to FactoONE...",
         "      Active token authorization verified.",
         "      Secure TLS tunnel health... SUCCESS (12.4 ms latency)",
         "🎉 SYSTEM SANITY DIAGNOSTIC SUCCESSFUL!",
@@ -202,7 +202,7 @@ export default function HomeSetupPortal() {
               Dwapar Edge Gateway Console
             </h1>
             <p className="text-xs text-gray-400 leading-relaxed max-w-2xl">
-              Local shop floor telemetry orchestrator. Collecting raw millisecond signals, running AI predictive maintenance models, and maintaining secure real-time synchronization with your <strong className="text-white">Factory Plus ERP</strong>.
+              Local shop floor telemetry orchestrator. Collecting raw millisecond signals, running AI predictive maintenance models, and maintaining secure real-time synchronization with your <strong className="text-white">FactoONE ERP</strong>.
             </p>
           </div>
 
@@ -277,7 +277,7 @@ export default function HomeSetupPortal() {
           {/* Secure Sync Tunnel Card */}
           <div className="glass p-6 rounded-3xl border border-white/5 space-y-4 flex flex-col justify-between relative shadow-lg group hover:border-brand-purple/30 transition-all">
             <div className="flex justify-between items-center">
-              <span className="text-[10px] font-mono uppercase text-gray-500 tracking-wider">Factory Plus Tunnel</span>
+              <span className="text-[10px] font-mono uppercase text-gray-500 tracking-wider">FactoONE Tunnel</span>
               <span className="h-2 w-2 rounded-full bg-[#10b981] animate-pulse" />
             </div>
 
@@ -527,7 +527,7 @@ export default function HomeSetupPortal() {
             <span className="font-mono text-[9px] text-gray-500 uppercase">Dwapar Edge Gateway local Console portal</span>
           </div>
           <span className="text-[9px] font-mono text-gray-500">
-            &copy; {new Date().getFullYear()} Dwapar Edge. Authorized for Factory Plus Shop Floor Integration.
+            &copy; {new Date().getFullYear()} Dwapar Edge. Authorized for FactoONE Shop Floor Integration.
           </span>
         </div>
       </footer>

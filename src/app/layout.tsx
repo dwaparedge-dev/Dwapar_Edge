@@ -13,15 +13,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Dwapar Edge | Industrial IoT Gateway & Edge Intelligence Platform",
-  description: "Next-generation industrial IoT gateway that brings low-latency machine telemetry, real-time edge AI analytics, and flawless syncing with Factory Plus manufacturing ERP.",
+  title: "Dwapar Edge | Industrial Software for Modern Manufacturing",
+  description: "Next-generation industrial IoT gateway that brings low-latency machine telemetry, real-time edge AI analytics, and flawless syncing with FactoONE manufacturing ERP.",
   keywords: [
     "Industrial IoT",
     "Edge Computing",
     "Edge AI",
     "Machine Telemetry",
     "Smart Manufacturing",
-    "Factory Plus",
+    "FactoONE",
     "OPC-UA",
     "Modbus",
     "MQTT Gateway"
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Dwapar Edge" }],
   openGraph: {
     title: "Dwapar Edge | Industrial IoT Gateway & Edge Intelligence",
-    description: "Next-generation industrial IoT edge platform for real-time machine telemetry, local edge AI analytics, and seamless Factory Plus cloud ERP integration.",
+    description: "Next-generation industrial IoT edge platform for real-time machine telemetry, local edge AI analytics, and seamless FactoONE cloud ERP integration.",
     type: "website",
   },
 };

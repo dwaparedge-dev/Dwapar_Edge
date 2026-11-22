@@ -12,7 +12,7 @@ export default function Solution() {
         <div className="max-w-3xl relative z-10">
           <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6">The Unified Platform</h2>
           <p className="text-xl text-[#f1f2f6] mb-10 leading-relaxed font-medium">
-            Factory Plus replaces your disconnected tools with a single, intelligent source of truth. From the moment raw materials arrive to the second the finished product is delivered.
+            FactoONE replaces your disconnected tools with a single, intelligent source of truth. From the moment raw materials arrive to the second the finished product is delivered.
           </p>
           
           <div className="space-y-4">

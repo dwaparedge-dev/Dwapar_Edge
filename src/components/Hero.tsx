@@ -1,54 +1,65 @@
-"use client";
 import React from "react";
-import { motion, Variants } from "framer-motion";
-import { Play } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+
+const services = [
+  ["ERP & MES software", "FactoONE runs planning, production and inventory."],
+  ["Machine intelligence", "Live OEE, downtime alerts and production analytics."],
+  ["On-site deployment", "Our engineers install and configure on your floor."],
+  ["Training & support", "Your operators trained shift by shift, then supported."],
+];
+
+const industries = ["Foundries", "Casting", "Forging", "Machining", "Fabrication", "Heavy engineering"];
 
 export default function Hero() {
-
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.1 } },
-  };
-
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-  };
-
-  const floatVariants: Variants = {
-    animate: { y: [-8, 8, -8], transition: { duration: 5, ease: "easeInOut", repeat: Infinity } },
-  };
-
-  const fadeVariants: Variants = {
-    hidden: { opacity: 0, scale: 0.98, filter: "blur(4px)" },
-    visible: { opacity: 1, scale: 1, filter: "blur(0px)", transition: { duration: 0.5 } },
-    exit: { opacity: 0, scale: 1.02, filter: "blur(4px)", transition: { duration: 0.5 } }
-  };
-
   return (
-    <section className="relative py-24 px-6 lg:px-12 max-w-7xl mx-auto flex flex-col items-center text-center overflow-visible">
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#4b6584]/5 blur-[100px] rounded-full pointer-events-none -z-10" />
+    <section className="relative bg-ink bg-blueprint pt-28 md:pt-40 px-5 sm:px-8 overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(201,165,78,0.14),transparent_55%)] pointer-events-none" />
+      <div className="relative max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-10 pb-14 md:pb-20">
+        <div className="lg:col-span-7">
+          <p className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.22em] text-gold mb-6">
+            <span className="w-2 h-2 bg-gold" />Industrial technology · Gujarat, India
+          </p>
+          <h1 className="text-[2.6rem] leading-[1.05] sm:text-6xl md:text-7xl font-semibold tracking-[-0.03em] text-bone">
+            Intelligence for the <span className="text-gold">modern factory floor.</span>
+          </h1>
+          <p className="mt-6 md:mt-8 text-base md:text-lg text-muted max-w-xl leading-relaxed">
+            Dwapar Edge builds manufacturing platform intelligence that connects planning, production and machine data, and we deploy it on-site alongside your team.
+          </p>
+          <div className="mt-8 flex flex-col sm:flex-row gap-3">
+            <a href="#products" className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-gold text-ink text-sm font-semibold hover:bg-gold2 transition-colors">
+              Explore the platform <ArrowRight className="w-4 h-4" />
+            </a>
+            <a href="#contact" className="inline-flex items-center justify-center px-6 py-3.5 border border-gold/40 text-bone text-sm font-medium hover:border-gold hover:text-gold transition-colors">
+              Talk to an engineer
+            </a>
+          </div>
+        </div>
 
-      <motion.div variants={containerVariants} initial="hidden" animate="visible" className="flex flex-col items-center w-full relative z-10">
-        <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-gray-200 mb-8 shadow-sm">
-          <span className="w-2 h-2 rounded-full bg-[#4b6584] animate-pulse" />
-          <span className="text-xs font-bold text-[#576574]">Introducing Factory Plus 2.0</span>
-        </motion.div>
+        <div className="lg:col-span-5 lg:pt-4">
+          <div className="bg-coal/90 border border-line">
+            <div className="flex items-center justify-between px-5 py-3 border-b border-line">
+              <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-gold">What we do</span>
+              <span className="font-mono text-[11px] text-dim">DE / 2026</span>
+            </div>
+            {services.map(([t, d], i) => (
+              <div key={t} className="flex gap-4 px-5 py-4 border-b border-line last:border-0">
+                <span className="font-mono text-xs text-gold pt-0.5">0{i + 1}</span>
+                <div>
+                  <p className="text-bone font-medium">{t}</p>
+                  <p className="text-sm text-muted mt-0.5">{d}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
-        <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-[#2f3542] max-w-4xl leading-[1.1]">
-          Run Your Entire Factory From <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4b6584] to-[#2f3542]">One Platform</span>
-        </motion.h1>
-
-        <motion.p variants={itemVariants} className="text-lg md:text-xl text-[#576574] mb-10 max-w-2xl font-medium">
-          ERP + MES + Machine Intelligence for modern manufacturing.
-        </motion.p>
-
-        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 w-full justify-center">
-          <motion.a whileHover={{ scale: 1.05, backgroundColor: "#f1f2f6" }} whileTap={{ scale: 0.95 }} href="#product" className="px-8 py-4 rounded-xl bg-white border border-gray-200 text-[#2f3542] font-bold transition-all shadow-sm flex items-center justify-center gap-2">
-            <Play className="w-4 h-4" /> See Platform
-          </motion.a>
-        </motion.div>
-      </motion.div>
+      <div className="relative max-w-6xl mx-auto border-t border-line py-5 flex flex-wrap items-center gap-x-6 gap-y-2">
+        <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-dim">Built for</span>
+        {industries.map((x) => (
+          <span key={x} className="text-sm text-bone/80">{x}</span>
+        ))}
+      </div>
     </section>
   );
 }

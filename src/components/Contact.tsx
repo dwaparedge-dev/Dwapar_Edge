@@ -9,11 +9,11 @@ export default function Contact() {
     <Section id="contact" tone="coal" pattern eyebrow="06 — Contact" title="Let's walk your shop floor." intro="Tell us about your plant. An engineer from our team replies within 24 hours.">
       <div className="grid lg:grid-cols-12 gap-6">
         <div className="lg:col-span-4 flex flex-col gap-4">
-          <a href="mailto:dwaparedge@gmail.com" className="group bg-ink border border-line p-5 flex items-start gap-4 hover:border-gold transition-colors">
+          <a href="mailto:info@dwaparedge.com" className="group bg-ink border border-line p-5 flex items-start gap-4 hover:border-gold transition-colors">
             <Mail className="w-5 h-5 text-gold mt-0.5" />
             <div>
               <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-dim">Email</p>
-              <p className="mt-1 text-bone group-hover:text-gold transition-colors break-all">dwaparedge@gmail.com</p>
+              <p className="mt-1 text-bone group-hover:text-gold transition-colors break-all">info@dwaparedge.com</p>
             </div>
           </a>
           <div className="bg-ink border border-line p-5 flex items-start gap-4">
@@ -24,7 +24,7 @@ export default function Contact() {
             </div>
           </div>
         </div>
-        <form action="mailto:dwaparedge@gmail.com" method="post" encType="text/plain" className="lg:col-span-8 relative bg-ink border border-line p-6 md:p-8 flex flex-col gap-4">
+        <form action="mailto:info@dwaparedge.com" method="post" encType="text/plain" className="lg:col-span-8 relative bg-ink border border-line p-6 md:p-8 flex flex-col gap-4">
           <div className="absolute top-0 left-0 right-0 h-[2px] bg-gold" />
           <div className="grid sm:grid-cols-2 gap-4">
             <input className={field} type="text" name="name" placeholder="Full name" required />

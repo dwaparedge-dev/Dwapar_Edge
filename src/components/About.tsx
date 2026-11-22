@@ -2,7 +2,7 @@ import React from "react";
 import { Section } from "./Section";
 
 const facts = [
-  ["Based in", "Gujarat, India, close to the foundry and engineering clusters we serve."],
+  ["Based in", "Gujarat, India, close to the manufacturing clusters we serve."],
   ["Mission", "Replace registers, spreadsheets and verbal reports with one paperless, real-time workflow."],
   ["Approach", "We spend time on the shop floor before writing software for it."],
 ];

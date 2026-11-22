@@ -8,7 +8,7 @@ const services = [
   ["Training & support", "Your operators trained shift by shift, then supported."],
 ];
 
-const industries = ["Foundries", "Casting", "Forging", "Machining", "Fabrication", "Heavy engineering"];
+const industries = ["Engineering & machining", "Automotive components", "Foundry & forging", "Plastics & packaging", "Textiles", "Process industries"];
 
 export default function Hero() {
   return (

@@ -67,7 +67,7 @@ export default function Production() {
           </div>
           <div className="lg:col-span-5 relative bg-coal border border-line self-start w-full">
             <div className="absolute top-0 left-0 right-0 h-[2px] bg-gold" />
-            {["Paperless process entry", "Lot & heat traceability", "Raw material and inventory control", "Live OEE and downtime alerts", "Staff, roles and permissions", "Built-in AI assistant"].map((pt) => (
+            {["Paperless process entry", "Lot & batch traceability", "Raw material and inventory control", "Live OEE and downtime alerts", "Staff, roles and permissions", "Built-in AI assistant"].map((pt) => (
               <div key={pt} className="flex items-center gap-3 px-5 py-3.5 border-b border-line last:border-0 text-bone/90"><span className="w-3 h-px bg-gold" />{pt}</div>
             ))}
           </div>
@@ -165,7 +165,7 @@ export default function Production() {
                   {currentScreen === 0 && (
                     <motion.div key="dashboard" variants={fadeVariants} initial="hidden" animate="visible" exit="exit" className="absolute inset-6 flex flex-col gap-6">
                       <div className="w-full bg-gradient-to-r from-[#4b6584] to-[#576574] rounded-xl p-5 shadow-sm text-white flex justify-between items-center">
-                        <div><h2 className="text-xl font-bold">Dashboard</h2><p className="text-xs text-gray-300">Overview</p></div>
+                        <div><div className="text-xl font-bold">Dashboard</div><p className="text-xs text-gray-300">Overview</p></div>
                         <div className="flex gap-2">
                            <span className="px-3 py-1 bg-white/10 rounded border border-white/20 text-xs">Today</span>
                            <span className="px-3 py-1 bg-[#2f3542] rounded border border-white/10 text-xs font-bold shadow-sm">Last 30 Days</span>
@@ -187,7 +187,7 @@ export default function Production() {
                       </div>
                       <div className="flex-1 grid grid-cols-2 gap-4">
                         <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-5 flex flex-col relative overflow-hidden">
-                          <h3 className="text-sm font-bold text-[#2f3542] mb-4">Utilization Distribution</h3>
+                          <div className="text-sm font-bold text-[#2f3542] mb-4">Utilization Distribution</div>
                           <div className="flex-1 flex items-center justify-center">
                              <div className="w-48 h-48 rounded-full shadow-inner relative flex items-center justify-center" style={{ background: 'conic-gradient(#10b981 0% 2%, #8b5cf6 2% 100%)' }}><span className="text-white font-bold text-xl drop-shadow-md">100%</span></div>
                           </div>
@@ -200,7 +200,7 @@ export default function Production() {
                   {currentScreen === 1 && (
                     <motion.div key="process" variants={fadeVariants} initial="hidden" animate="visible" exit="exit" className="absolute inset-6 flex flex-col gap-6 relative">
                       <div className="w-full bg-gradient-to-r from-[#4b6584] to-[#576574] rounded-xl p-5 shadow-sm text-white flex justify-between items-center">
-                        <div><h2 className="text-xl font-bold">Process Entry</h2></div>
+                        <div><div className="text-xl font-bold">Process Entry</div></div>
                         <div className="flex gap-2"><button className="px-4 py-1.5 bg-[#2f3542] text-white rounded border border-white/10 text-xs font-bold">+ New Entry</button></div>
                       </div>
                       <div className="grid grid-cols-3 gap-4">
@@ -218,7 +218,7 @@ export default function Production() {
                            <div className="p-6 flex flex-col items-center gap-6">
                               <div className="text-center relative">
                                  <div className="absolute -right-4 top-2 w-2 h-2 rounded-full bg-emerald-500 animate-pulse"/>
-                                 <h1 className="text-4xl font-mono font-extrabold text-[#4b6584] tracking-wider mb-1">00:00:16</h1>
+                                 <div className="text-4xl font-mono font-extrabold text-[#4b6584] tracking-wider mb-1">00:00:16</div>
                                  <p className="text-[10px] font-bold text-gray-400 tracking-widest uppercase">Elapsed Time</p>
                               </div>
                               <div className="w-full flex flex-col gap-3 text-sm">
@@ -240,7 +240,7 @@ export default function Production() {
                   {currentScreen === 2 && (
                     <motion.div key="staff" variants={fadeVariants} initial="hidden" animate="visible" exit="exit" className="absolute inset-6 flex flex-col gap-6 relative">
                       <div className="w-full bg-gradient-to-r from-[#4b6584] to-[#576574] rounded-xl p-5 shadow-sm text-white flex justify-between items-center">
-                        <div><h2 className="text-xl font-bold">Staff</h2></div>
+                        <div><div className="text-xl font-bold">Staff</div></div>
                         <button className="px-4 py-1.5 bg-white/10 text-white rounded border border-white/20 text-xs font-bold">+ Add New</button>
                       </div>
                       <div className="grid grid-cols-4 gap-4">
@@ -274,16 +274,16 @@ export default function Production() {
                     <motion.div key="roles" variants={fadeVariants} initial="hidden" animate="visible" exit="exit" className="absolute inset-6 flex gap-6 relative">
                        <div className="w-64 flex flex-col gap-3">
                          <div className="w-full bg-[#576574] rounded-xl p-5 shadow-sm text-white mb-2">
-                           <h2 className="text-lg font-bold">Roles & Perms</h2>
+                           <div className="text-lg font-bold">Roles & Perms</div>
                          </div>
                          <div className="bg-white border-l-4 border-amber-500 shadow-md p-3 rounded-xl flex items-center gap-3 relative">
                            <div className="absolute right-3 top-3"><div className="w-2 h-2 rounded-full bg-amber-500" /></div>
                            <div className="w-10 h-10 rounded-lg bg-amber-100 flex items-center justify-center text-amber-600"><Lock className="w-5 h-5"/></div>
-                           <div><h4 className="font-bold text-sm text-[#2f3542]">Admin <span className="text-[8px] bg-amber-100 text-amber-600 px-1 rounded ml-1">You</span></h4><span className="text-xs text-gray-400 font-medium">186 perms</span></div>
+                           <div><div className="font-bold text-sm text-[#2f3542]">Admin <span className="text-[8px] bg-amber-100 text-amber-600 px-1 rounded ml-1">You</span></div><span className="text-xs text-gray-400 font-medium">186 perms</span></div>
                          </div>
                          <div className="bg-white border border-gray-100 p-3 rounded-xl flex items-center gap-3 hover:bg-gray-50">
                            <div className="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600 font-bold">M</div>
-                           <div><h4 className="font-bold text-sm text-[#2f3542]">Manager</h4><span className="text-xs text-gray-400 font-medium">18 perms</span></div>
+                           <div><div className="font-bold text-sm text-[#2f3542]">Manager</div><span className="text-xs text-gray-400 font-medium">18 perms</span></div>
                          </div>
                        </div>
                        <div className="flex-1 flex flex-col gap-4">
@@ -292,7 +292,7 @@ export default function Production() {
                             <div className="flex items-center gap-4 pl-2">
                               <div className="w-12 h-12 rounded-xl bg-amber-100 flex items-center justify-center text-amber-600"><Shield className="w-6 h-6"/></div>
                               <div>
-                                <h3 className="font-extrabold text-[#2f3542] text-xl flex items-center gap-2">Admin <span className="text-[10px] bg-amber-200/50 border border-amber-300 px-2 py-0.5 rounded text-amber-700">System Admin</span></h3>
+                                <div className="font-extrabold text-[#2f3542] text-xl flex items-center gap-2">Admin <span className="text-[10px] bg-amber-200/50 border border-amber-300 px-2 py-0.5 rounded text-amber-700">System Admin</span></div>
                                 <span className="text-sm text-gray-500 font-medium">186 of 48 Signal Permissions Granted</span>
                               </div>
                             </div>
@@ -301,14 +301,14 @@ export default function Production() {
                          <div className="bg-white border border-gray-200 rounded-xl p-4 flex justify-between items-center shadow-sm">
                            <div className="flex items-center gap-4">
                              <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-[#576574]"><LayoutDashboard className="w-5 h-5"/></div>
-                             <div><h4 className="font-bold text-[#2f3542] text-base">Dashboard</h4><p className="text-xs text-gray-500 font-medium">7 of 7 Pages Accessible</p></div>
+                             <div><div className="font-bold text-[#2f3542] text-base">Dashboard</div><p className="text-xs text-gray-500 font-medium">7 of 7 Pages Accessible</p></div>
                            </div>
                            <div className="w-10 h-5 rounded-full bg-emerald-500 relative"><div className="absolute right-1 top-1 w-3 h-3 rounded-full bg-white"/></div>
                          </div>
                          <div className="bg-white border border-gray-200 rounded-xl p-4 flex justify-between items-center shadow-sm">
                            <div className="flex items-center gap-4">
                              <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-[#576574]"><Database className="w-5 h-5"/></div>
-                             <div><h4 className="font-bold text-[#2f3542] text-base">Master</h4><p className="text-xs text-gray-500 font-medium">8 of 8 Pages Accessible</p></div>
+                             <div><div className="font-bold text-[#2f3542] text-base">Master</div><p className="text-xs text-gray-500 font-medium">8 of 8 Pages Accessible</p></div>
                            </div>
                            <div className="w-10 h-5 rounded-full bg-emerald-500 relative"><div className="absolute right-1 top-1 w-3 h-3 rounded-full bg-white"/></div>
                          </div>
@@ -321,7 +321,7 @@ export default function Production() {
                     <motion.div key="ai" variants={fadeVariants} initial="hidden" animate="visible" exit="exit" className="absolute inset-6 flex flex-col gap-6">
                       <div className="w-full bg-gradient-to-r from-[#4b6584] to-[#576574] rounded-xl p-5 shadow-sm text-white flex justify-between items-center">
                         <div>
-                          <h2 className="text-xl font-bold">AI Assistant</h2>
+                          <div className="text-xl font-bold">AI Assistant</div>
                           <p className="text-xs text-gray-300">Ask me anything about your factory...</p>
                         </div>
                         <div className="flex gap-2 bg-white/10 p-1 rounded-lg border border-white/20">
@@ -358,7 +358,7 @@ export default function Production() {
                   {currentScreen === 5 && (
                     <motion.div key="lots" variants={fadeVariants} initial="hidden" animate="visible" exit="exit" className="absolute inset-6 flex flex-col gap-6">
                       <div className="w-full bg-gradient-to-r from-[#4b6584] to-[#576574] rounded-xl p-5 shadow-sm text-white flex justify-between items-center">
-                        <div><h2 className="text-xl font-bold">Lots Tracking</h2></div>
+                        <div><div className="text-xl font-bold">Lots Tracking</div></div>
                         <div className="flex gap-2"><span className="px-3 py-1 bg-white text-[#2f3542] rounded border text-xs font-bold">General Overview</span></div>
                       </div>
                       <div className="grid grid-cols-3 gap-4">
@@ -371,7 +371,7 @@ export default function Production() {
                             <div className="flex gap-3">
                               <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm"><Clock className={`w-4 h-4 ${lot.c}`} /></div>
                               <div>
-                                <h4 className="font-bold text-sm text-[#2f3542] flex items-center gap-2">{lot.n}</h4>
+                                <div className="font-bold text-sm text-[#2f3542] flex items-center gap-2">{lot.n}</div>
                                 <span className="text-[10px] text-gray-500">{lot.p}</span>
                               </div>
                             </div>
@@ -380,13 +380,13 @@ export default function Production() {
                         ))}
                       </div>
                       <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden flex-1 flex flex-col p-4">
-                        <h3 className="text-sm font-bold text-[#2f3542] mb-3">All Active Orders</h3>
+                        <div className="text-sm font-bold text-[#2f3542] mb-3">All Active Orders</div>
                         <div className="grid grid-cols-3 gap-4">
                           {["Dharmik", "new cusorm...", "Meet", "Dharmik", "gnt", "vnkdn"].map((lot, i) => (
                             <div key={i} className="bg-gray-50 p-3 rounded-lg border border-gray-100 flex justify-between items-center">
                               <div className="flex gap-3 items-center">
                                 <div className="w-6 h-6 rounded bg-blue-100 flex items-center justify-center text-blue-500"><Package className="w-3 h-3" /></div>
-                                <h4 className="font-bold text-xs text-[#2f3542]">{lot}</h4>
+                                <div className="font-bold text-xs text-[#2f3542]">{lot}</div>
                               </div>
                             </div>
                           ))}
@@ -399,7 +399,7 @@ export default function Production() {
                   {currentScreen === 6 && (
                     <motion.div key="materials" variants={fadeVariants} initial="hidden" animate="visible" exit="exit" className="absolute inset-6 flex flex-col gap-6 relative">
                       <div className="w-full bg-gradient-to-r from-[#4b6584] to-[#576574] rounded-xl p-5 shadow-sm text-white flex justify-between items-center">
-                        <div><h2 className="text-xl font-bold">Raw Materials</h2></div>
+                        <div><div className="text-xl font-bold">Raw Materials</div></div>
                         <button className="px-4 py-1.5 bg-white/10 text-white rounded border border-white/20 text-xs font-bold">Add New</button>
                       </div>
                       <div className="flex gap-4 border-b border-gray-200">

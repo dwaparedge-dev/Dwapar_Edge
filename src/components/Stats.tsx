@@ -1,8 +1,8 @@
 import React from "react";
 
 const stats = [
-  ["30%", "Less machine downtime", "Average across partner foundries."],
-  ["10k+", "Tons tracked", "Melting material and finished castings."],
+  ["30%", "Less machine downtime", "Average across partner factories."],
+  ["10k+", "Tons tracked", "Raw material and finished goods."],
   ["100%", "Paperless", "No manual registers or physical logs."],
   ["24/7", "Live OEE", "Continuous machine state monitoring."],
 ];

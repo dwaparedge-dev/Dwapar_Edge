@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,25 +14,57 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Dwapar Edge | Industrial Software for Modern Manufacturing",
-  description: "Next-generation industrial IoT gateway that brings low-latency machine telemetry, real-time edge AI analytics, and flawless syncing with FactoONE manufacturing ERP.",
-  keywords: [
-    "Industrial IoT",
-    "Edge Computing",
-    "Edge AI",
-    "Machine Telemetry",
-    "Smart Manufacturing",
-    "FactoONE",
-    "OPC-UA",
-    "Modbus",
-    "MQTT Gateway"
-  ],
-  authors: [{ name: "Dwapar Edge" }],
-  openGraph: {
-    title: "Dwapar Edge | Industrial IoT Gateway & Edge Intelligence",
-    description: "Next-generation industrial IoT edge platform for real-time machine telemetry, local edge AI analytics, and seamless FactoONE cloud ERP integration.",
-    type: "website",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.name}`,
   },
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
+  keywords: [...siteConfig.keywords],
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  category: "technology",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: siteConfig.name,
+    locale: "en_IN",
+    title: siteConfig.title,
+    description: siteConfig.description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.title,
+    description: siteConfig.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  // Paste the token from Google Search Console / Bing Webmaster Tools here once the domain is verified.
+  // verification: { google: "...", other: { "msvalidate.01": "..." } },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#030712",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
@@ -41,7 +74,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="en-IN"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full flex flex-col bg-[#030712] text-[#f3f4f6]">

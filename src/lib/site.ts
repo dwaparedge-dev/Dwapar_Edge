@@ -1,0 +1,41 @@
+// Single source of truth for SEO: metadata, sitemap, robots, OG image and JSON-LD all read from here.
+// Set NEXT_PUBLIC_SITE_URL in the deployment environment to the live domain (no trailing slash).
+export const siteConfig = {
+  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://dwaparedge.com").replace(/\/$/, ""),
+  name: "Dwapar Edge",
+  title: "Dwapar Edge | ERP & MES Software for Manufacturing Factories",
+  shortTitle: "Manufacturing ERP, MES & Machine Intelligence",
+  description:
+    "Dwapar Edge builds FactoONE, a paperless ERP + MES platform for every kind of factory. Production planning, live OEE and downtime alerts, lot traceability, inventory control and on-site deployment from Gujarat, India.",
+  email: "info@dwaparedge.com",
+  region: "Gujarat",
+  country: "IN",
+  productName: "FactoONE",
+  productUrl: "https://www.factoone.com/",
+  keywords: [
+    "manufacturing ERP",
+    "MES software",
+    "factory ERP software",
+    "ERP for manufacturing companies",
+    "manufacturing execution system",
+    "factory management software",
+    "manufacturing ERP India",
+    "shop floor management software",
+    "production tracking software",
+    "inventory management for manufacturers",
+    "OEE monitoring",
+    "machine downtime tracking",
+    "lot traceability",
+    "paperless manufacturing",
+    "production planning software",
+    "smart factory",
+    "Industry 4.0",
+    "manufacturing software Gujarat",
+    "FactoONE",
+    "Dwapar Edge",
+  ],
+  founders: [
+    { name: "Dharmik Ahir", jobTitle: "Co-Founder & Chief Technology Officer" },
+    { name: "Meet Gojiya", jobTitle: "Co-Founder & Chief Marketing Officer" },
+  ],
+} as const;

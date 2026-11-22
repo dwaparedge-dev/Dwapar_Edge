@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
 const links = [
@@ -23,11 +24,11 @@ export default function Navbar() {
   return (
     <header className={`fixed top-0 inset-x-0 z-50 transition-colors duration-300 ${scrolled || open ? "bg-ink/90 backdrop-blur border-b border-line" : "bg-transparent"}`}>
       <div className="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-3" aria-label="Dwapar Edge">
+        <Link href="/" className="flex items-center gap-3" aria-label="Dwapar Edge home">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logo.png" alt="" className="h-7 w-auto" style={{ mixBlendMode: "lighten" }} />
           <span className="text-[13px] font-medium tracking-[0.2em] uppercase text-bone">Dwapar Edge</span>
-        </a>
+        </Link>
 
         <nav className="hidden md:flex items-center gap-9 text-sm text-muted">
           {links.map(([h, l]) => (

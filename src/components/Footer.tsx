@@ -12,7 +12,7 @@ export default function Footer() {
         <div className="md:col-span-6">
           <div className="flex items-center gap-3">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo.png" alt="" className="h-8 w-auto" style={{ mixBlendMode: "lighten" }} />
+            <img src="/logo-mark.png" alt="" width={700} height={372} className="h-7 w-auto" />
             <span className="text-sm tracking-[0.2em] uppercase text-bone">Dwapar Edge</span>
           </div>
           <p className="mt-5 text-muted max-w-sm leading-relaxed">Manufacturing platform intelligence. Built in Gujarat, deployed on the shop floor.</p>

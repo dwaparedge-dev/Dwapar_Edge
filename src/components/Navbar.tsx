@@ -26,7 +26,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3" aria-label="Dwapar Edge home">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.png" alt="" className="h-7 w-auto" style={{ mixBlendMode: "lighten" }} />
+          <img src="/logo-mark.png" alt="" width={700} height={372} className="h-6 w-auto" />
           <span className="text-[13px] font-medium tracking-[0.2em] uppercase text-bone">Dwapar Edge</span>
         </Link>
 

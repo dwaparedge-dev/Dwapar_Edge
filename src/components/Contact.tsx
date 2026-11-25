@@ -1,12 +1,11 @@
 import React from "react";
 import { Mail, MapPin } from "lucide-react";
 import { Section } from "./Section";
-
-const field = "w-full bg-ink border border-line px-4 py-3 text-bone placeholder:text-dim focus:border-gold outline-none transition-colors";
+import DemoForm from "./DemoForm";
 
 export default function Contact() {
   return (
-    <Section id="contact" tone="coal" pattern eyebrow="06 — Contact" title="Let's walk your shop floor." intro="Tell us about your plant. An engineer from our team replies within 24 hours.">
+    <Section id="contact" tone="coal" pattern eyebrow="06 — Contact" title="Book a demo." intro="Leave your details and our team will call you to set up a walkthrough of FactoONE for your plant.">
       <div className="grid lg:grid-cols-12 gap-6">
         <div className="lg:col-span-4 flex flex-col gap-4">
           <a href="mailto:info@dwaparedge.com" className="group bg-ink border border-line p-5 flex items-start gap-4 hover:border-gold transition-colors">
@@ -24,16 +23,7 @@ export default function Contact() {
             </div>
           </div>
         </div>
-        <form action="mailto:info@dwaparedge.com" method="post" encType="text/plain" className="lg:col-span-8 relative bg-ink border border-line p-6 md:p-8 flex flex-col gap-4">
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gold" />
-          <div className="grid sm:grid-cols-2 gap-4">
-            <input className={field} type="text" name="name" placeholder="Full name" required />
-            <input className={field} type="email" name="email" placeholder="Work email" required />
-          </div>
-          <input className={field} type="text" name="company" placeholder="Company / plant name" />
-          <textarea className={`${field} resize-none`} name="message" rows={4} placeholder="What do you manufacture, and what would you like to fix?" required />
-          <button type="submit" className="self-start px-7 py-3.5 bg-gold text-ink text-sm font-semibold hover:bg-gold2 transition-colors">Send message</button>
-        </form>
+        <DemoForm />
       </div>
     </Section>
   );

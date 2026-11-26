@@ -14,6 +14,17 @@ const tag = (v: unknown) => clean(v, 100).toLowerCase() || undefined;
 
 export interface Geo { country?: string; region?: string; city?: string }
 
+// Vercel sends the state as an ISO 3166-2 code ("GJ"), Cloudflare as a name. The report should read "Gujarat", so Indian codes are spelled out.
+const INDIA_STATES: Record<string, string> = {
+  AN: "Andaman and Nicobar Islands", AP: "Andhra Pradesh", AR: "Arunachal Pradesh", AS: "Assam", BR: "Bihar", CH: "Chandigarh", CG: "Chhattisgarh",
+  DD: "Dadra and Nagar Haveli and Daman and Diu", DN: "Dadra and Nagar Haveli and Daman and Diu", DH: "Dadra and Nagar Haveli and Daman and Diu",
+  DL: "Delhi", GA: "Goa", GJ: "Gujarat", HP: "Himachal Pradesh", HR: "Haryana", JH: "Jharkhand", JK: "Jammu and Kashmir", KA: "Karnataka", KL: "Kerala",
+  LA: "Ladakh", LD: "Lakshadweep", MH: "Maharashtra", ML: "Meghalaya", MN: "Manipur", MP: "Madhya Pradesh", MZ: "Mizoram", NL: "Nagaland",
+  OD: "Odisha", OR: "Odisha", PB: "Punjab", PY: "Puducherry", RJ: "Rajasthan", SK: "Sikkim", TN: "Tamil Nadu", TG: "Telangana", TS: "Telangana",
+  TR: "Tripura", UP: "Uttar Pradesh", UK: "Uttarakhand", UT: "Uttarakhand", WB: "West Bengal",
+};
+export const indiaStateName = (code: string): string | undefined => INDIA_STATES[code.toUpperCase()];
+
 /**
  * Where the request came from, as the hosting platform worked it out from the address. The address itself is not
  * read here, not forwarded and not stored. Vercel and Cloudflare headers are supported; with neither (local dev) there is no location.
@@ -24,9 +35,10 @@ export function geoFromHeaders(h: Pick<Headers, "get">): Geo {
     try { return clean(decodeURIComponent(v), 100) || undefined; } catch { return clean(v, 100) || undefined; }
   };
   const country = (h.get("x-vercel-ip-country") ?? h.get("cf-ipcountry") ?? "").trim().toUpperCase();
+  const region = decode(h.get("x-vercel-ip-country-region")) ?? decode(h.get("cf-region"));
   return {
     ...(/^[A-Z]{2}$/.test(country) && country !== "XX" && country !== "T1" ? { country } : {}),
-    region: decode(h.get("x-vercel-ip-country-region")) ?? decode(h.get("cf-region")),
+    region: country === "IN" && region && /^[A-Za-z]{2,3}$/.test(region) ? (indiaStateName(region) ?? region) : region,
     city: decode(h.get("x-vercel-ip-city")) ?? decode(h.get("cf-ipcity")),
   };
 }

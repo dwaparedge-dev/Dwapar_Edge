@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { siteConfig } from "@/lib/site";
+import AnalyticsProvider from "@/components/analytics/AnalyticsProvider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -79,6 +80,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-[#030712] text-[#f3f4f6]">
         {children}
+        <AnalyticsProvider />
       </body>
     </html>
   );

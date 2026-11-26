@@ -1,4 +1,6 @@
 import React from "react";
+import Link from "next/link";
+import PrivacySettingsButton from "@/components/analytics/PrivacySettingsButton";
 
 const cols: [string, [string, string][]][] = [
   ["Platform", [["FactoONE", "https://www.factoone.com/"], ["Overview", "#products"]]],
@@ -30,7 +32,11 @@ export default function Footer() {
       </div>
       <div className="max-w-6xl mx-auto border-t border-line py-6 flex flex-col sm:flex-row justify-between gap-2 text-xs text-dim">
         <p>&copy; {new Date().getFullYear()} Dwapar Edge. All rights reserved.</p>
-        <p>Gujarat, India</p>
+        <p className="flex flex-wrap items-center gap-x-5 gap-y-1">
+          <Link href="/privacy" className="hover:text-bone transition-colors">Privacy notice</Link>
+          <PrivacySettingsButton className="hover:text-bone transition-colors" />
+          <span>Gujarat, India</span>
+        </p>
       </div>
     </footer>
   );

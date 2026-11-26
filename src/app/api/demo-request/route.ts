@@ -1,4 +1,5 @@
 import { checkDemoFields } from "@/lib/demo-request";
+import { UUID_RE } from "@/lib/analytics/config";
 
 // Server-side relay: the browser posts here, this route posts to the CRM with the secret key. The key never reaches the browser.
 const INTAKE_PATH = "/api/intake/demo-requests";
@@ -62,8 +63,11 @@ export async function POST(request: Request) {
   }
 
   const externalRef = typeof body.externalRef === "string" && /^[A-Za-z0-9_-]{8,100}$/.test(body.externalRef) ? body.externalRef : undefined;
+  // Only present when the visitor accepted analytics: it lets staff see what they looked at before asking for a demo.
+  const visitorId = typeof body.visitorId === "string" && UUID_RE.test(body.visitorId) ? body.visitorId.toLowerCase() : undefined;
   const payload = {
     ...checked.value,
+    ...(visitorId ? { visitorId } : {}),
     source: "dwaparedge-site",
     entryPoint: label(body.entryPoint) ?? "form",
     ...(externalRef ? { externalRef } : {}),

@@ -1,6 +1,8 @@
 "use client";
 import React, { useRef, useState } from "react";
+import Link from "next/link";
 import { checkDemoFields, normalizeMobile, type DemoErrors } from "@/lib/demo-request";
+import { currentVisitorId, trackEvent } from "@/lib/analytics/tracker";
 
 const field = "w-full bg-ink border border-line px-4 py-3 text-bone placeholder:text-dim focus:border-gold outline-none transition-colors";
 const FAILED = "We could not send your request. Please check your connection and try again.";
@@ -20,6 +22,7 @@ export default function DemoForm() {
   const [done, setDone] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const reference = useRef<string | null>(null);
+  const started = useRef(false);
 
   const set = (k: keyof typeof values) => (e: React.ChangeEvent<HTMLInputElement>) => setValues((v) => ({ ...v, [k]: e.target.value }));
 
@@ -40,9 +43,9 @@ export default function DemoForm() {
       const res = await fetch("/api/demo-request", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...checked.value, website, externalRef: reference.current, entryPoint: "contact" }),
+        body: JSON.stringify({ ...checked.value, website, externalRef: reference.current, entryPoint: "contact", visitorId: currentVisitorId() ?? undefined }),
       });
-      if (res.ok) return setDone(true);
+      if (res.ok) { trackEvent("demo_request"); return setDone(true); }
       const data = (await res.json().catch(() => null)) as { error?: unknown } | null;
       setSubmitError(typeof data?.error === "string" && data.error ? data.error : FAILED);
     } catch {
@@ -69,7 +72,7 @@ export default function DemoForm() {
   const border = (k: keyof DemoErrors) => (errors[k] ? "!border-red-400" : "");
 
   return (
-    <form onSubmit={onSubmit} noValidate className={`${wrap} flex flex-col gap-4`}>
+    <form onSubmit={onSubmit} noValidate className={`${wrap} flex flex-col gap-4`} onFocus={() => { if (!started.current) { started.current = true; trackEvent("form_start"); } }}>
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-gold" />
       {/* Honeypot: off-screen and skipped by keyboard and screen readers; only bots fill it */}
       <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", width: 1, height: 1, overflow: "hidden" }}>
@@ -107,6 +110,10 @@ export default function DemoForm() {
         </button>
         <p className="text-xs text-dim">No spam. We usually reply within 2–3 working days.</p>
       </div>
+      <p className="text-xs text-dim leading-relaxed">
+        By pressing “Book a demo” you ask us to contact you about FactoONE using these details. We use them only for that, and you can ask us to delete them at any time.{" "}
+        <Link href="/privacy" className="text-gold hover:text-gold2 underline underline-offset-2">Privacy notice</Link>
+      </p>
     </form>
   );
 }

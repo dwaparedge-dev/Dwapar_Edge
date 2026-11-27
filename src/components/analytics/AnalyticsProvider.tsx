@@ -84,20 +84,20 @@ export default function AnalyticsProvider() {
     <div role="dialog" aria-modal="false" aria-labelledby="privacy-title" aria-describedby="privacy-text"
       className="fixed z-[60] bottom-4 left-4 right-4 sm:right-auto sm:max-w-md bg-ink border border-line shadow-2xl p-5">
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-gold" />
-      <p id="privacy-title" className="text-bone font-semibold">{decided ? "Privacy settings" : "Can we count your visit?"}</p>
+      <p id="privacy-title" className="text-bone font-semibold">{decided ? "Cookie settings" : "We use cookies"}</p>
       <p id="privacy-text" className="mt-2 text-sm text-muted leading-relaxed">
         {decided
-          ? `Website analytics is currently ${choice === "accepted" ? "ON" : "OFF"} in this browser. Turning it off stops all measuring and erases the visit data we hold for this browser.`
-          : "With your permission we record which pages you open, roughly where you are (city level), your browser type and how you found us, to learn what visitors need. We never keep your IP address, run ads, or sell or share this data. You can change your mind at any time from the footer."}{" "}
-        <Link href="/privacy" className="text-gold hover:text-gold2 underline underline-offset-2">Privacy notice</Link>
+          ? `Analytics cookies are currently ${choice === "accepted" ? "ON" : "OFF"} in this browser. Turning them off stops tracking and deletes the data we hold for this browser.`
+          : "We use cookies and similar technologies to understand how visitors use our website and to improve it. We don't store your IP address or show ads."}{" "}
+        <Link href="/privacy" className="text-gold hover:text-gold2 underline underline-offset-2">Learn more</Link>
       </p>
       <div className="mt-4 flex flex-wrap gap-3">
         {/* Both choices look the same on purpose: declining must be as easy as accepting. */}
         <button id="privacy-accept" type="button" onClick={accept} disabled={decided && choice === "accepted"} className={`${btn} border-line text-bone hover:border-gold disabled:opacity-40 disabled:cursor-default`}>
-          {decided ? "Turn on analytics" : "Accept analytics"}
+          {decided ? "Turn on" : "Accept"}
         </button>
         <button id="privacy-decline" type="button" onClick={decline} disabled={decided && choice === "declined"} className={`${btn} border-line text-bone hover:border-gold disabled:opacity-40 disabled:cursor-default`}>
-          {decided ? "Turn off and erase my data" : "Decline"}
+          {decided ? "Turn off and delete my data" : "Decline"}
         </button>
         {decided && <button id="privacy-close" type="button" onClick={() => setPanelOpen(false)} className="px-3 py-2.5 text-sm text-dim hover:text-bone">Close</button>}
       </div>
